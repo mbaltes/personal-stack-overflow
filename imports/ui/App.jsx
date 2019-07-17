@@ -1,10 +1,11 @@
 import React from 'react';
+import Header from './Header';
 //import Hello from './Hello.jsx';
 //import Info from './Info.jsx';
 
 const App = () => (
   <div>
-    <h1>psodb</h1>
+    <Header />
   </div>
 )
 
