@@ -4,7 +4,7 @@ import Header from './Header';
 //import Info from './Info.jsx';
 
 const App = () => (
-  <div>
+  <div className="wrapper">
     <Header />
   </div>
 )

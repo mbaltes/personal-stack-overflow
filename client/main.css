@@ -3,6 +3,10 @@ body {
   font-family: sans-serif;
 }
 
+.wrapper {
+  display: grid;
+}
+
 .top-nav {
   background: #fafafb;
 }
