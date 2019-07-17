@@ -1,13 +1,19 @@
 import React from 'react';
-import Hello from './Hello.jsx';
-import Info from './Info.jsx';
+//import Hello from './Hello.jsx';
+//import Info from './Info.jsx';
 
 const App = () => (
   <div>
-    <h1>Welcome to Meteor!</h1>
-    <Hello />
-    <Info />
+    <h1>psodb</h1>
   </div>
-);
+)
+
+// const App = () => (
+//   <div>
+//     <h1>Welcome to Meteor!</h1>
+//     <Hello />
+//     <Info />
+//   </div>
+// );
 
 export default App;
