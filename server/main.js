@@ -1,4 +1,6 @@
 import { Meteor } from 'meteor/meteor';
+import Questions from '/imports/api/questions';
+
 //import Links from '/imports/api/links';
 
 // function insertLink(title, url) {
