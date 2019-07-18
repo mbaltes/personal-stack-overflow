@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Recent from './Recent';
 import MostUpvoted from './MostUpvoted';
+import WatchTags from './WatchTags';
 //import Hello from './Hello.jsx';
 //import Info from './Info.jsx';
 
@@ -10,6 +11,7 @@ const App = () => (
     <Header />
     <Recent />
     <MostUpvoted />
+    <WatchTags />
   </div>
 )
 
