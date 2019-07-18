@@ -1,5 +1,5 @@
 body {
-  padding: 5px;
+  margin: 0;
   font-family: sans-serif;
 }
 
@@ -7,6 +7,31 @@ body {
   display: grid;
 }
 
-.top-nav {
+nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1em;
+  align-items: center;
+  text-align: center;
+  border-top: 4px solid orangered;
   background: #fafafb;
+  padding: 10px;
+}
+
+.nav-logo {
+  grid-column: 1;
+  background-image: url("/images/so-logo-2.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 8vh;
+}
+
+.nav-search {
+  grid-column: 2;
+}
+
+.nav-component {
+  grid-column: 3;
 }

@@ -28,7 +28,7 @@ export default class AddQuestion extends Component {
         <button onClick={this.handleOpenModal.bind(this)}>Add Question</button>
         <Modal 
            isOpen={this.state.showModal}
-           contentLabel="Minimal Modal Example"
+           contentLabel="Modal database add"
         >
           <button onClick={this.handleCloseModal.bind(this)}>Close Modal</button>
           <ModalInputForm />
