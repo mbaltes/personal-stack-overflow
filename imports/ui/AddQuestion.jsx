@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import ModalInputForm from './ModalInputForm';
 
 Modal.setAppElement('#react-target')
 
@@ -13,12 +14,12 @@ export default class AddQuestion extends Component {
     };
   }
 
-  handleOpenModal () {
-    this.setState({ showModal: true });
+  handleOpenModal() {
+    this.setState({showModal: true});
   }
   
-  handleCloseModal () {
-    this.setState({ showModal: false });
+  handleCloseModal() {
+    this.setState({showModal: false});
   }
 
   render() {
@@ -30,7 +31,7 @@ export default class AddQuestion extends Component {
            contentLabel="Minimal Modal Example"
         >
           <button onClick={this.handleCloseModal.bind(this)}>Close Modal</button>
-          <p>Hello from react-modal</p>
+          <ModalInputForm />
         </Modal>
       </div>
     );
