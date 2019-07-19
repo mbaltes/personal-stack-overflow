@@ -3,24 +3,16 @@ import Header from './Header';
 import Recent from './Recent';
 import MostUpvoted from './MostUpvoted';
 import WatchTags from './WatchTags';
-//import Hello from './Hello.jsx';
-//import Info from './Info.jsx';
 
 const App = () => (
   <div className="wrapper">
     <Header />
     <Recent />
-    <MostUpvoted />
-    <WatchTags />
+    <div className="second-section">
+      <MostUpvoted />
+      <WatchTags />
+    </div>
   </div>
 )
-
-// const App = () => (
-//   <div>
-//     <h1>Welcome to Meteor!</h1>
-//     <Hello />
-//     <Info />
-//   </div>
-// );
 
 export default App;

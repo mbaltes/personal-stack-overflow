@@ -13,10 +13,12 @@ class WatchTags extends Component {
 
   render() {
     return(
-      <section className="card-container">
-        <h2>Watched Tags</h2>
-        <ul className="question-list">{this.renderQuestions()}</ul>
-      </section>
+      <div className="watch-tags-section">
+        <section className="card-container">
+          <h2>Watched Tags</h2>
+          <ul className="question-list">{this.renderQuestions()}</ul>
+        </section>
+      </div>
     );
   }
 }

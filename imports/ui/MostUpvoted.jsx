@@ -13,10 +13,12 @@ class MostUpvoted extends Component {
 
   render() {
     return(
-      <section className="card-container">
-        <h2>Most Upvoted</h2>
-        <ul className="question-list">{this.renderQuestions()}</ul>
-      </section>
+      <div className="most-upvoted-section">
+        <section className="card-container">
+          <h2>Most Upvoted</h2>
+          <ul className="question-list">{this.renderQuestions()}</ul>
+        </section>
+      </div>
     );
   }
 }

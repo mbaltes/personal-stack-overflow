@@ -13,10 +13,12 @@ class Recent extends Component {
 
   render() {
     return(
-      <section className="card-container">
-        <h2>Recent Questions</h2>
-        <ul className="question-list">{this.renderQuestions()}</ul>
-      </section>
+      <div className="recent-questions-section">
+        <section className="card-container">
+          <h2>Recent Questions</h2>
+          <ul className="question-list">{this.renderQuestions()}</ul>
+        </section>
+      </div>
     );
   }
 }
