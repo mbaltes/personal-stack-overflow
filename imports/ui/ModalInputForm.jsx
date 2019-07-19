@@ -12,12 +12,6 @@ export default class ModalInputForm extends Component {
         onSubmit={this.handleSubmit.bind(this)}>
           <input
             type="text"
-            ref="title"
-            placeholder="Question"
-          />
-          <br/>
-          <input
-            type="text"
             ref="url"
             placeholder="Link address"
           />
@@ -42,15 +36,10 @@ export default class ModalInputForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const questionTitle = ReactDOM.findDOMNode(this.refs.title).value.trim();
     const link = ReactDOM.findDOMNode(this.refs.url).value.trim();
     const tags = ReactDOM.findDOMNode(this.refs.tags).value.trim().split(", ");
     const notes = ReactDOM.findDOMNode(this.refs.notes).value.trim();
-
-    // console.log(title);
-    // console.log(url);
-    // console.log(notes);
-    // console.log(tags);
+    const questionTitle = this.handleSOLink(link);
 
     Questions.insert({
       questionTitle: questionTitle,
@@ -62,9 +51,14 @@ export default class ModalInputForm extends Component {
     });
 
     // Clear form
-    ReactDOM.findDOMNode(this.refs.title).value = '';
     ReactDOM.findDOMNode(this.refs.url).value = '';
     ReactDOM.findDOMNode(this.refs.tags).value = '';
     ReactDOM.findDOMNode(this.refs.notes).value = '';
+  }
+
+  handleSOLink(link) {
+    let tmp = link.slice(link.lastIndexOf("/") + 1, link.length).replace(/-/g, ' ');
+    
+    return tmp.charAt(0).toUpperCase() + tmp.slice(1);
   }
 }
