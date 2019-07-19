@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .wrapper {
@@ -57,4 +57,9 @@ nav {
   display: flex;
   justify-content: space-between;
   transition: all 0.3s linear;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: black;
 }
