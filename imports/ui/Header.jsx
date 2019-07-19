@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import AddQuestion from './AddQuestion';
+import { withTracker } from 'meteor/react-meteor-data';
 
-export default class Header extends Component {
+import AddQuestion from './AddQuestion';
+import Search from './Search';
+import Questions from '../api/questions';
+
+
+class Header extends Component {
   render() {
     return(
       <header>
@@ -10,9 +15,9 @@ export default class Header extends Component {
             <a href="#" className="nav-link"></a>
           </div>
           <div className="nav-search">
-            <input type="text" ref="search-text" placeholder="Search"/>
+            <Search data={this.props.questions}/>
           </div>
-          <div className="nav-component">
+          <div className="nav-add-btn">
             <AddQuestion />
           </div>
         </nav>
@@ -20,3 +25,10 @@ export default class Header extends Component {
     );
   }
 }
+
+
+export default withTracker(() => {
+  return {
+    questions: Questions.find({}).fetch(),
+  };
+})(Header);
