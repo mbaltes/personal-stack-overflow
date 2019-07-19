@@ -25,6 +25,6 @@ class MostUpvoted extends Component {
 
 export default withTracker(() => {
   return {
-    questions: Questions.find({}, { sort: { upvotes: -1 }, limit: 10 }).fetch(),
+    questions: Questions.find({}, { sort: { upvotes: -1 }, limit: 5 }).fetch(),
   };
 })(MostUpvoted);
