@@ -21,11 +21,21 @@ export default class Question extends Component {
           <br/>
           {this.props.data.tags.join(' ')}
         </p>
+        <a
+          href="#"
+          onClick={this.handleDelete.bind(this)}
+        >
+          Del
+        </a>
       </article>
     );
   }
 
   handleUpvote() {
     Questions.update({_id: this.props.data._id}, {$inc: {upvotes: 1}});
+  }
+
+  handleDelete() {
+    Questions.remove(this.props.data._id);
   }
 }
