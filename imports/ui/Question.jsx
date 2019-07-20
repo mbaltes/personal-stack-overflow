@@ -9,14 +9,16 @@ export default class Question extends Component {
       <article className="question-card">
         <a 
           href={this.props.data.link} 
-          target="_blank">{this.props.data.questionTitle}
-        </a>
-        <button 
-          className="upvote-button" 
+          target="_blank"
           onClick={this.handleUpvote.bind(this)}
         >
+          {this.props.data.questionTitle}
+        </a>
+        <p>
+          {this.props.data.notes}
+          <br/>
           {this.props.data.upvotes}
-        </button>
+        </p>
       </article>
     );
   }

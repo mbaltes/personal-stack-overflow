@@ -4,7 +4,6 @@ import Question from './Question';
 import Questions from '../api/questions';
 
 class Recent extends Component {
-
   renderQuestions() {
     return this.props.questions.map((question) => (
       <Question key={question._id} data={question} />
@@ -15,7 +14,6 @@ class Recent extends Component {
     return(
       <div className="recent-questions-section">
         <section className="card-container">
-          <h2>Recent Questions</h2>
           <ul className="question-list">{this.renderQuestions()}</ul>
         </section>
       </div>
@@ -23,8 +21,8 @@ class Recent extends Component {
   }
 }
 
-export default withTracker(() => {
+export default withTracker((props) => {
   return {
-    questions: Questions.find({}, { sort: { createdAt: -1 }, limit: 5 }).fetch(),
+    questions: Questions.find({questionTitle: {$regex: props.ss, $options: 'i'}}, { sort: { createdAt: -1 } }).fetch(),
   };
 })(Recent);

@@ -7,11 +7,6 @@ import WatchTags from './WatchTags';
 const App = () => (
   <div className="wrapper">
     <Header />
-    <Recent />
-    <div className="second-section">
-      <MostUpvoted />
-      <WatchTags />
-    </div>
   </div>
 )
 
