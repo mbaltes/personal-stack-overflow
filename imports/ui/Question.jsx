@@ -18,6 +18,8 @@ export default class Question extends Component {
           {this.props.data.notes}
           <br/>
           {this.props.data.upvotes}
+          <br/>
+          {this.props.data.tags.join(' ')}
         </p>
       </article>
     );
