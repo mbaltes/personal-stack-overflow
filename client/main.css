@@ -32,7 +32,7 @@ nav {
   grid-gap: 1em;
   align-items: center;
   text-align: center;
-  border-top: 4px solid orangered;
+  border-top: 4px solid #f48024;
   background: #fafafb;
   padding: 10px;
 }
