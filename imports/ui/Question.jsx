@@ -7,26 +7,31 @@ export default class Question extends Component {
   render() {
     return (
       <article className="question-card">
-        <a 
-          href={this.props.data.link} 
-          target="_blank"
-          onClick={this.handleUpvote.bind(this)}
-        >
-          {this.props.data.questionTitle}
-        </a>
-        <p>
+        <div className="question-card-link">
+          <a 
+            href={this.props.data.link} 
+            target="_blank"
+            onClick={this.handleUpvote.bind(this)}
+          >
+            {this.props.data.questionTitle}
+          </a>
+        </div>
+        <div className="question-card-note">
           {this.props.data.notes}
-          <br/>
-          {this.props.data.upvotes}
-          <br/>
-          {this.props.data.tags.join(' ')}
-        </p>
-        <a
-          href="#"
-          onClick={this.handleDelete.bind(this)}
-        >
-          Del
-        </a>
+        </div>
+        <div className="question-card-bottom">
+          <div className="question-card-tags">
+            {this.props.data.tags.join(' ')}
+          </div>
+          <div className="question-card-delete">
+            <a
+              href="#"
+              onClick={this.handleDelete.bind(this)}
+            >
+              x
+            </a>
+          </div>
+        </div>
       </article>
     );
   }
