@@ -37,17 +37,17 @@ class Recent extends Component {
   }
 
   sortView() {
-    return !this.state.sortBy ? 'Recent' : 'Most upvoted';
+    return !this.state.sortBy ? 'Recent' : 'Most viewed';
   }
 
   render() {
     return(
       <div>
-        <div>
+        <div className="view-section">
           <div className="view-count">
             {this.viewCount()}
           </div>
-          <div className="sort-by">
+          <div className="view-sort-by">
             <a 
               href="#" 
               onClick={this.toggleSort.bind(this)}
