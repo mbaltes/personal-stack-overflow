@@ -4,11 +4,23 @@ import Question from './Question';
 import Questions from '../api/questions';
 
 class Recent extends Component {
-  renderQuestions() {
-    //console.log(Object.keys(this.props.questions).length);
-    return this.props.questions.map((question) => (
-      <Question key={question._id} data={question} />
-    ));
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sortBy: false,
+    };
+  }
+  renderQuestions(bool) {
+    if (!bool) {
+      return this.props.questions.map((question) => (
+        <Question key={question._id} data={question} />
+      ));
+    } else {
+      return this.props.questionsUpvotes.map((question) => (
+        <Question key={question._id} data={question} />
+      ));
+    }
   }
 
   viewCount() {
@@ -20,15 +32,33 @@ class Recent extends Component {
     );
   }
 
+  toggleSort() {
+    this.setState({sortBy: !this.state.sortBy});
+  }
+
+  sortView() {
+    return !this.state.sortBy ? 'Recent' : 'Most upvoted';
+  }
+
   render() {
     return(
       <div>
-        <div className="view-count">
-          {this.viewCount()}
+        <div>
+          <div className="view-count">
+            {this.viewCount()}
+          </div>
+          <div className="sort-by">
+            <a 
+              href="#" 
+              onClick={this.toggleSort.bind(this)}
+            >
+              Sort by: {this.sortView()}
+            </a>
+          </div>
         </div>
         <div className="recent-questions-section">
           <section className="card-container">
-            <ul className="question-list">{this.renderQuestions()}</ul>
+            <ul className="question-list">{this.renderQuestions(this.state.sortBy)}</ul>
           </section>
         </div>
       </div>
@@ -39,6 +69,7 @@ class Recent extends Component {
 export default withTracker((props) => {
   return {
     questions: Questions.find({questionTitle: {$regex: props.ss, $options: 'i'}}, { sort: { createdAt: -1 } }).fetch(),
+    questionsUpvotes: Questions.find({questionTitle: {$regex: props.ss, $options: 'i'}}, { sort: { upvotes: -1 } }).fetch(),
     dbSize: Questions.find({}).count(),
   };
 })(Recent);
