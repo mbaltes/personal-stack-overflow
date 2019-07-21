@@ -61,6 +61,7 @@ export default class ModalInputForm extends Component {
     ReactDOM.findDOMNode(this.refs.url).value = '';
     ReactDOM.findDOMNode(this.refs.tags).value = '';
     ReactDOM.findDOMNode(this.refs.notes).value = '';
+    ReactDOM.findDOMNode(this.refs.title).value = '';
   }
 
   handleSOLink(link) {
