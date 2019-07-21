@@ -8,23 +8,42 @@ class Recent extends Component {
     super(props);
 
     this.state = {
-      sortBy: false,
+      boolSort: false,
+      boolSearch: false,
     };
   }
-  renderQuestions(bool) {
-    if (!bool) {
+  renderQuestions(search, sort) {
+    if (!search && !sort) {
       return this.props.questions.map((question) => (
         <Question key={question._id} data={question} />
       ));
-    } else {
+    } else if (!search && sort) {
       return this.props.questionsUpvotes.map((question) => (
+        <Question key={question._id} data={question} />
+      ));
+    } else if (search && !sort) {
+      return this.props.tagsRecent.map((question) => (
+        <Question key={question._id} data={question} />
+      ));
+    } else if (search && sort) {
+      return this.props.tagsMostViewed.map((question) => (
         <Question key={question._id} data={question} />
       ));
     }
   }
 
-  viewCount() {
-    let n = Object.keys(this.props.questions).length;
+  viewCount(search, sort) {
+    let n;
+    if (!search && !sort) {
+      n = Object.keys(this.props.questions).length;
+    } else if (!search && sort) {
+      n = Object.keys(this.props.questionsUpvotes).length;
+    } else if (search && !sort) {
+      n = Object.keys(this.props.tagsRecent).length;
+    } else if (search && sort) {
+      n = Object.keys(this.props.tagsMostViewed).length;
+    }
+
     return (
       <p>
         Viewing <span className="view-count-style">{n}</span> of {this.props.dbSize} questions
@@ -33,11 +52,19 @@ class Recent extends Component {
   }
 
   toggleSort() {
-    this.setState({sortBy: !this.state.sortBy});
+    this.setState({boolSort: !this.state.boolSort});
+  }
+
+  toggleSearch() {
+    this.setState({boolSearch: !this.state.boolSearch});
   }
 
   sortView() {
-    return !this.state.sortBy ? 'Recent' : 'Most viewed';
+    return !this.state.boolSort ? 'Recent' : 'Most viewed';
+  }
+
+  boolSearch() {
+    return !this.state.boolSearch ? 'Title' : 'Tags';
   }
 
   render() {
@@ -45,9 +72,15 @@ class Recent extends Component {
       <div>
         <div className="view-section">
           <div className="view-count">
-            {this.viewCount()}
+            {this.viewCount(this.state.boolSearch, this.state.boolSort)}
           </div>
           <div className="view-sort-by">
+            <a 
+              href="#" 
+              onClick={this.toggleSearch.bind(this)}
+            >
+              Search by: {this.boolSearch()} &emsp;
+            </a>
             <a 
               href="#" 
               onClick={this.toggleSort.bind(this)}
@@ -58,7 +91,7 @@ class Recent extends Component {
         </div>
         <div className="recent-questions-section">
           <section className="card-container">
-            <ul className="question-list">{this.renderQuestions(this.state.sortBy)}</ul>
+            <ul className="question-list">{this.renderQuestions(this.state.boolSearch, this.state.boolSort)}</ul>
           </section>
         </div>
       </div>
@@ -70,6 +103,8 @@ export default withTracker((props) => {
   return {
     questions: Questions.find({questionTitle: {$regex: props.ss, $options: 'i'}}, { sort: { createdAt: -1 } }).fetch(),
     questionsUpvotes: Questions.find({questionTitle: {$regex: props.ss, $options: 'i'}}, { sort: { upvotes: -1 } }).fetch(),
+    tagsRecent: Questions.find({tags: {$regex: props.ss, $options: 'i'}}, { sort: { createdAt: -1 } }).fetch(),
+    tagsMostViewed: Questions.find({tags: {$regex: props.ss, $options: 'i'}}, { sort: { upvotes: -1 } }).fetch(),
     dbSize: Questions.find({}).count(),
   };
 })(Recent);
