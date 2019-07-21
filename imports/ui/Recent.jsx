@@ -15,7 +15,7 @@ class Recent extends Component {
     let n = Object.keys(this.props.questions).length;
     return (
       <p>
-        Viewing {n} of {this.props.dbSize} questions
+        Viewing <span className="view-count-style">{n}</span> of {this.props.dbSize} questions
       </p>
     );
   }

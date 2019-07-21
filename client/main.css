@@ -75,6 +75,15 @@ nav {
   font-weight: 300;
 }
 
+.view-count {
+  margin-left: 2.5em;
+}
+
+.view-count-style {
+  color: #f48024;
+  font-weight: bold;
+}
+
 p {
   font-style: italic;
   font-weight: 300;
