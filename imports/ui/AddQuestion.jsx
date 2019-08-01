@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import ModalInputForm from './ModalInputForm';
 
-Modal.setAppElement('#react-target')
+Modal.setAppElement('#modal-target')
 
 export default class AddQuestion extends Component {
   constructor(props) {
@@ -29,6 +29,8 @@ export default class AddQuestion extends Component {
         <Modal 
            isOpen={this.state.showModal}
            contentLabel="Modal database add"
+           className='modal-style'
+           overlayClassName='modal-overlay-style'
         >
           <button onClick={this.handleCloseModal.bind(this)}>Close Modal</button>
           <ModalInputForm />
@@ -38,4 +40,4 @@ export default class AddQuestion extends Component {
   }
 }
 
-ReactDOM.render(<AddQuestion />, document.getElementById('react-target'));
+//ReactDOM.render(<AddQuestion />, document.getElementById('react-target'));
