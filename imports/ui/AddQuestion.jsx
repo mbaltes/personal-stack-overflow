@@ -25,14 +25,20 @@ export default class AddQuestion extends Component {
   render() {
     return(
       <div>
-        <button onClick={this.handleOpenModal.bind(this)}>Add Question</button>
+        <button
+          className="add-question-button" 
+          onClick={this.handleOpenModal.bind(this)}>Add Question</button>
         <Modal 
            isOpen={this.state.showModal}
            contentLabel="Modal database add"
            className='modal-style'
            overlayClassName='modal-overlay-style'
         >
-          <button onClick={this.handleCloseModal.bind(this)}>Close Modal</button>
+          <a
+            href="#"
+            className="close-modal-button" 
+            onClick={this.handleCloseModal.bind(this)}
+          >x</a>
           <ModalInputForm />
         </Modal>
       </div>

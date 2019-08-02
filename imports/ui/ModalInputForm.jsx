@@ -7,36 +7,39 @@ import Questions from '../api/questions';
 export default class ModalInputForm extends Component {
   render() {
     return(
-      <form 
-        className="add-form"
-        onSubmit={this.handleSubmit.bind(this)}>
-          <input
-            type="text"
-            ref="url"
-            placeholder="Link address"
-            onChange={this.handleChange.bind(this)}
-          />
-          <br/>
-          <input
-            type="text"
-            ref="title"
-            placeholder="Title"
-          />
-          <br/>
-          <input
-            type="text"
-            ref="tags"
-            placeholder="Tags (comma separated)"
-          />
-          <br/>
-          <input 
-            type="textarea"
-            ref="notes"
-            placeholder="Note"
-          />
-          <br/>
-          <input type="submit" value="Submit"></input>
-      </form> 
+      <div className="main-form-div">
+        <form 
+          className="add-form"
+          onSubmit={this.handleSubmit.bind(this)}>
+            <input
+              type="text"
+              ref="url"
+              placeholder="Link address"
+              autoFocus
+              onChange={this.handleChange.bind(this)}
+            />
+            <br/>
+            <input
+              type="text"
+              ref="title"
+              placeholder="Title"
+            />
+            <br/>
+            <input
+              type="text"
+              ref="tags"
+              placeholder="Tags (comma separated)"
+            />
+            <br/>
+            <textarea 
+              type="textarea"
+              ref="notes"
+              placeholder="Note"
+            />
+            <br/>
+            <input type="submit" value="Submit"></input>
+        </form> 
+      </div>
     );
   }
 
