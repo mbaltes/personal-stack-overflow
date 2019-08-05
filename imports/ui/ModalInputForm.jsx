@@ -65,6 +65,9 @@ export default class ModalInputForm extends Component {
     ReactDOM.findDOMNode(this.refs.tags).value = '';
     ReactDOM.findDOMNode(this.refs.notes).value = '';
     ReactDOM.findDOMNode(this.refs.title).value = '';
+
+    // Close input modal form
+    this.props.closeInputModal();
   }
 
   handleSOLink(link) {

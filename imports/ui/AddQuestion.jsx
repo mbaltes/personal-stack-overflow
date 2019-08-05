@@ -39,7 +39,7 @@ export default class AddQuestion extends Component {
             className="close-modal-button" 
             onClick={this.handleCloseModal.bind(this)}
           >x</a>
-          <ModalInputForm />
+          <ModalInputForm closeInputModal={this.handleCloseModal.bind(this)}/>
         </Modal>
       </div>
     );
